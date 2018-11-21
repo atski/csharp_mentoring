@@ -8,7 +8,12 @@ namespace ConsoleApp1
 {
     class MergeSort
     {
-      
+      public Array MergeSortArray(Array arrayToSort)
+        {
+            Array sortedArray;
+            sortedArray.Length;
+            return sortedArray;
+        }
 
     }
 }

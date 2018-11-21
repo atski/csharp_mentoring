@@ -11,7 +11,7 @@ namespace ConsoleApp1
 {
     class RandomNumbersFileCreate
     {
-        private Array GenerateNumbers(int numbersQuantity)
+        public Array GenerateNumbers(int numbersQuantity)
         {
             Random randGen = new Random();
             int[] numbersArray = new int[numbersQuantity];
@@ -22,22 +22,21 @@ namespace ConsoleApp1
             return numbersArray;
         }
 
-        public void CreateFile(string path, int numbers)
+        public void CreateFile(string path, Array numbersArray)
         {
-            var randomNumbers = GenerateNumbers(numbers);
-
-            if (File.Exists(path)){
+            if (File.Exists(path))
+            {
                 File.Delete(path);
             }
             else
             {
                 using (StreamWriter sw = File.CreateText(path))
                 {
-                    foreach(int i in randomNumbers)
+                    foreach (int i in numbersArray)
                     {
                         sw.WriteLine("{0}", i);
                     }
-                }
+                };
             }
 
         }
