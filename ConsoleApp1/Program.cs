@@ -25,12 +25,9 @@ namespace ConsoleApp1
             Console.WriteLine("Enter desired path to output file:");
             string outputFilesPath = Console.ReadLine();
 
-            RandomNumbersFileCreate fileWithRandomNumbers = new RandomNumbersFileCreate();
+            DataCreate fileWithRandomNumbers = new DataCreate();
             Array randomGeneratedArray = fileWithRandomNumbers.GenerateNumbers(elementsNumber);
             fileWithRandomNumbers.CreateFile(filePath, randomGeneratedArray);
-
-
-            
         }
     }
 }

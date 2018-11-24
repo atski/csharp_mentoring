@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class RandomNumbersFileCreate
+    class DataCreate
     {
         public Array GenerateNumbers(int numbersQuantity)
         {
