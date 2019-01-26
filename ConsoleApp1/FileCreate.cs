@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
 
-
-namespace ConsoleApp1
+namespace MergeSortApp
 {
-    class RandomNumbersFileCreate
+    class ManageData
     {
-        public Array GenerateNumbers(int numbersQuantity)
+        public  Array GenerateNumbers(int numbersQuantity)
         {
             Random randGen = new Random();
             int[] numbersArray = new int[numbersQuantity];
@@ -28,19 +22,38 @@ namespace ConsoleApp1
             {
                 File.Delete(path);
             }
-            else
+            using (StreamWriter sw = File.CreateText(path))
             {
-                using (StreamWriter sw = File.CreateText(path))
+                foreach (int i in numbersArray)
                 {
-                    foreach (int i in numbersArray)
-                    {
-                        sw.WriteLine("{0}", i);
-                    }
-                };
+                    sw.WriteLine("{0}", i);
+                }
             }
-
         }
 
-       
+        public int[] ReadFileToArray(string pathToFile)
+        {
+            int[] arrayFromFile;
+            using (StreamReader sr = new StreamReader(pathToFile))
+            {
+                int countLines = 0;
+                while (sr.ReadLine() != null)
+                {
+                    countLines++;
+                };
+
+                arrayFromFile = new int[countLines];
+
+                string line;
+                int i = 0;
+                sr.BaseStream.Position = 0;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    arrayFromFile[i] = Convert.ToInt32(line);
+                    i++;
+                }
+            };
+            return arrayFromFile;
+        }
     }
 }
