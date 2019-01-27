@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-
+using ConsoleApp1;
 
 
 namespace MergeSortApp
@@ -9,28 +9,28 @@ namespace MergeSortApp
     {
         static void Main(string[] args)
         {
-            int elementsNumber;
+            int numbersQuantity;
 
             Console.WriteLine("Enter desired path to generated file:");
-            string filePath = Console.ReadLine();
-            
+            string inputFile = Console.ReadLine();
 
             Console.WriteLine("enter nuber of records (<1bill)");
-            if (!Int32.TryParse(Console.ReadLine(), out elementsNumber)) {
+            if (!Int32.TryParse(Console.ReadLine(), out numbersQuantity)) {
                 Console.WriteLine("not integer");
             }
 
             Console.WriteLine("Enter desired path to output file:");
-            string outputFilesPath = Console.ReadLine();
+            string outFile = Console.ReadLine();
             
             // creating file with randomly generated numbers written each in new row
-            ManageData fileWithRandomNumbers = new ManageData();
-            Array randomGeneratedArray = fileWithRandomNumbers.GenerateNumbers(elementsNumber);
-            fileWithRandomNumbers.CreateFile(filePath, randomGeneratedArray);
+            FileManage fileManager = new FileManage();
+            RandomNumbers randData = new RandomNumbers();
+            Array generatedNumbers = randData.GenerateNumbers(numbersQuantity);
+            fileManager.CreateFile(inputFile, generatedNumbers);
 
-            int[] arrayWithRandomNumbers = fileWithRandomNumbers.ReadFileToArray(filePath);
+            int[] arrayWithRandomNumbers = fileManager.ReadFileToArray(inputFile);
             MergeSort sort = new MergeSort();
-            fileWithRandomNumbers.CreateFile(outputFilesPath, sort.MergeSortArray(arrayWithRandomNumbers));
+            fileManager.CreateFile(outFile, sort.Sort(arrayWithRandomNumbers));
         }
     }
 }

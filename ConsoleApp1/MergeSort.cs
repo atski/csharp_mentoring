@@ -5,36 +5,24 @@ namespace MergeSortApp
 {
     class MergeSort
     {
-        private Tuple<int[], int[]> SplitArray(int[] arrayToSplit)
+        private Tuple<int[], int[]> Split(int[] arrayToSplit)
         {
             int left, right;
             int[] leftArray, rightArray;
             if (arrayToSplit.Length > 2)
             {
 
-                if (arrayToSplit.Length % 2 == 0)
-                {
-                    left = arrayToSplit.Length/2;
-                    right = left;
-                }
-                else
-                {
-                    left = arrayToSplit.Length / 2;
-                    right = left + 1;
-                }
-                
+                left = arrayToSplit.Length/2;
+                right = arrayToSplit.Length - left;                
                 leftArray = new int[left];
                 rightArray = new int[right];
-
-                for (int i = 0; i < left; i++)
+                
+                for (int k = 0; k < arrayToSplit.Length; k++)
                 {
-                    leftArray[i] = arrayToSplit[i];
+                    if (k < left) leftArray[k] = arrayToSplit[k];
+                    else rightArray[k - left] = arrayToSplit[k];
                 }
 
-                for (int j = right-1; j < arrayToSplit.Length; j++)
-                {
-                    rightArray[j - right-1] = arrayToSplit[j];
-                }
                 return new Tuple<int[], int[]>(leftArray, rightArray);
 
             }
@@ -47,7 +35,7 @@ namespace MergeSortApp
             else return null;
         }
 
-        private int[] MergeArrays(int[] lArray, int[] rArray)
+        private int[] MergeSorted(int[] lArray, int[] rArray)
         {
             int resultArrayLength = lArray.Length + rArray.Length;
             int[] resultArray = new int[resultArrayLength];
@@ -55,7 +43,7 @@ namespace MergeSortApp
             int i = 0;
             int j = 0;
 
-            do
+            while (k < resultArrayLength) 
             {
                 if (i < lArray.Length && j<rArray.Length)
                 {
@@ -63,39 +51,35 @@ namespace MergeSortApp
                     {
                         resultArray[k] = lArray[i];
                         i++;
-                        k++;
                     }
                     else 
                     {
                         resultArray[k] = rArray[j];
                         j++;
-                        k++;
                     }
                 }
                 else if (i >= lArray.Length && j < rArray.Length)
                 {
                     resultArray[k] = rArray[j];
                     j++;
-                    k++;
                 }
                 else if (i < lArray.Length && j >= rArray.Length)
                 {
                     resultArray[k] = lArray[i];
                     i++;
-                    k++;
                 }
-                else break;
-            } while (k < resultArrayLength);
+                k++;
+            } 
             return resultArray;
         }
 
-        public int[] MergeSortArray(int[] arrayToSort)
+        public int[] Sort(int[] arrayToSort)
         {
             if (arrayToSort.Length >= 2)
             {
-                Tuple<int[],int[]> tupleArrays = SplitArray(arrayToSort);
+                Tuple<int[],int[]> tupleArrays = Split(arrayToSort);
 
-                int[] resultArray = MergeArrays(MergeSortArray(tupleArrays.Item1), MergeSortArray(tupleArrays.Item2));
+                int[] resultArray = MergeSorted(Sort(tupleArrays.Item1), Sort(tupleArrays.Item2));
                 return resultArray;
             }
             else
