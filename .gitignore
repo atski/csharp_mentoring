@@ -1,5 +1,11 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
-/ConsoleApp1/.vs/Solution1/v15/Server/sqlite3/db.lock
+﻿../.vs/ConsoleApp1/
+.vs/Solution1/v15/Server/
+bin/
+obj/Debug/ConsoleApp1.csproj.CoreCompileInputs.cache
+obj/Debug/ConsoleApp1.csproj.FileListAbsolute.txt
+obj/Debug/ConsoleApp1.exe
+obj/Debug/ConsoleApp1.pdb
+obj/Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
+obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs
+obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
+obj/Release/
