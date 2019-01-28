@@ -25,7 +25,7 @@ namespace MergeSortApp
             // creating file with randomly generated numbers written each in new row
             FileManage fileManager = new FileManage();
             RandomNumbers randData = new RandomNumbers();
-            Array generatedNumbers = randData.GenerateNumbers(numbersQuantity);
+            int[] generatedNumbers = randData.GenerateNumbers(numbersQuantity);
             fileManager.CreateFile(inputFile, generatedNumbers);
 
             int[] arrayWithRandomNumbers = fileManager.ReadFileToArray(inputFile);

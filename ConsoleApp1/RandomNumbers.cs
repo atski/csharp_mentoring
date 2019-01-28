@@ -8,7 +8,7 @@ namespace ConsoleApp1
 {
     class RandomNumbers
     {
-        public Array GenerateNumbers(int numbersQuantity)
+        public int[] GenerateNumbers(int numbersQuantity)
         {
             Random randGen = new Random();
             int[] numbersArray = new int[numbersQuantity];

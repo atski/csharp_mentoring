@@ -5,7 +5,7 @@ namespace MergeSortApp
 {
     class FileManage
     {
-        public void CreateFile(string path, Array numbersArray)
+        public void CreateFile(string path, int[] numbersArray)
         {
             if (File.Exists(path))
             {
