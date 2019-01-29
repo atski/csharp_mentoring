@@ -3,7 +3,7 @@
 
 namespace MergeSortApp
 {
-    class MergeSort
+    public class MergeSort
     {
         private Tuple<int[], int[]> Split(int[] arrayToSplit)
         {

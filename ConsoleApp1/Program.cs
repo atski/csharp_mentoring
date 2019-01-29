@@ -5,7 +5,7 @@ using ConsoleApp1;
 
 namespace MergeSortApp
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {

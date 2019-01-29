@@ -3,7 +3,7 @@ using System.IO;
 
 namespace MergeSortApp
 {
-    class FileManager
+    public class FileManager
     {
         public void CreateFile(string path, int[] numbersArray)
         {
