@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.IO;
 
 namespace MergeSortApp
@@ -22,27 +23,24 @@ namespace MergeSortApp
 
         public int[] ReadFileToArray(string pathToFile)
         {
-            int[] arrayFromFile;
+            ArrayList lstFromFile = new ArrayList();
+            int[] randNumbers;
             using (StreamReader sr = new StreamReader(pathToFile))
             {
                 int countLines = 0;
-                while (sr.ReadLine() != null)
-                {
-                    countLines++;
-                };
-
-                arrayFromFile = new int[countLines];
-
                 string line;
-                int i = 0;
-                sr.BaseStream.Position = 0;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    arrayFromFile[i] = Convert.ToInt32(line);
-                    i++;
+                    countLines++;
+                    lstFromFile.Add(Convert.ToInt32(line));
                 }
-            };
-            return arrayFromFile;
+            }
+
+            randNumbers =  (int[]) lstFromFile.ToArray();
+            {
+
+            }
+            return randNumbers;
         }
     }
 }
